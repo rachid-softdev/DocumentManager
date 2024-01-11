@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\front",
+    "\\front\\src",
+    "\\front\\src\\app",
+    "\\front\\src\\app\\features",
+    "\\front\\src\\app\\features\\admin",
+    "\\front\\src\\app\\features\\admin\\dashboard",
+    "\\front\\src\\app\\features\\admin\\dashboard\\category"
+  ],
+  "SelectedNode": "\\front\\src\\app\\features\\admin\\dashboard\\category",
+  "PreviewInSolutionExplorer": false
+}

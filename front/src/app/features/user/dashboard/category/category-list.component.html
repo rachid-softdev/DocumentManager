@@ -1,0 +1,129 @@
+<div class="mx-auto px-4 py-4 lg:container sm:px-8">
+
+    <div class="grid grid-cols-1">
+        <section class="overflow-x-auto rounded bg-gray-50 shadow-xl dark:bg-night-700">
+            <div class="">
+                <div class="relative overflow-auto bg-white shadow-md dark:bg-night-700 sm:rounded-lg">
+
+                    <!-- Version avec Accordion -->
+                    <ng-container *ngFor="let category of getCategories">
+                        <accordion [collapsing]="getCollapsing">
+                            <accordion-item [expanded]="true">
+                                <ng-template accordionHeader let-toggle="toggle">
+                                    <div
+                                        class="flex items-center justify-between px-4 h-12 rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-night-700 dark:bg-night-800">
+                                        <p class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Catégorie : {{ category.getName }}</p>
+                                        <div class="flex space-x-2">
+                                            <button (click)="toggle()">+</button>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                    <div class="p-2 md:flex md:flex-row md:space-x-4 md:space-y-0">
+                                        <div
+                                            class="max-w-sm overflow-auto rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-night-700 dark:bg-night-800">
+                                            <ng-container *ngIf="category; else loadingTemplate">
+                                                <p
+                                                    class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                                    {{ category.getName }}</p>
+                                                <p class="mb-2 text-base tracking-tight text-gray-900 dark:text-white">
+                                                    Description : {{ category.getDescription | HTMLEntityDecode }}
+                                                </p>
+                                                <div
+                                                    class="flex items-center overflow-auto p-4 scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track-gray-100 scrollbar-thumb-blue-400 dark:scrollbar-thumb-night-700 dark:scrollbar-track-night-800">
+                                                    <ng-container *ngIf="isUserSubscribed(category)">
+                                                        <button type="button"
+                                                            (click)="onCategoryUnsubscribeClick(category)"
+                                                            class="m-1 flex w-full items-center justify-center rounded-lg bg-red-700 px-2 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-red-300 hover:bg-red-800 dark:bg-red-600 dark:focus:ring-red-800 dark:hover:bg-red-700 md:w-auto">
+                                                            Se désabonner
+                                                        </button>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="!isUserSubscribed(category)">
+                                                        <button type="button"
+                                                            (click)="onCategorySubscribeClick(category)"
+                                                            class="m-1 flex w-full items-center justify-center rounded-lg bg-blue-700 px-2 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 hover:bg-blue-800 dark:bg-blue-600 dark:focus:ring-blue-800 dark:hover:bg-blue-700 md:w-auto">
+                                                            S'abonner
+                                                        </button>
+                                                    </ng-container>
+                                                </div>
+                                            </ng-container>
+                                            <!-- Récursivité pour afficher les sous-catégories -->
+                                            <ng-container
+                                                *ngIf="category.getSubcategories && category.getSubcategories.length > 0">
+                                                <ng-container
+                                                    *ngTemplateOutlet="categoryTemplate; context: { $implicit: category.getSubcategories, level: 1, parentCategory: category }"></ng-container>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </accordion-item>
+
+                        </accordion>
+
+                    </ng-container>
+
+                    <ng-template #loadingTemplate>
+                        <!-- Un template de chargement ou autre action si la catégorie est en cours de chargement -->
+                    </ng-template>
+
+                    <ng-template #categoryTemplate let-subcategories let-level="level"
+                        let-parentCategory="parentCategory">
+                        <div
+                            class="pl-{{ level * 4 }} overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track-gray-100 scrollbar-thumb-blue-400 dark:scrollbar-thumb-night-700 dark:scrollbar-track-night-800">
+                            <ng-container *ngFor="let subcategory of subcategories">
+                                <div
+                                    class="flex flex-col justify-between space-y-3 p-2 md:flex-row md:space-x-4 md:space-y-0">
+                                    <div
+                                        class="max-w-sm overflow-auto rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-night-700 dark:bg-night-800">
+                                        <ng-container *ngIf="subcategory; else loadingTemplate">
+                                            <p
+                                                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                                {{ subcategory.getName | HTMLEntityDecode}}</p>
+                                            <p class="mb-2 text-base tracking-tight text-gray-900 dark:text-white">
+                                                Description : {{ subcategory.getDescription | HTMLEntityDecode }}
+                                            </p>
+                                            <p class="mb-2 text-base tracking-tight text-gray-900 dark:text-white">
+                                                Catégorie parente : {{ parentCategory?.getName | HTMLEntityDecode }}
+                                            </p>
+                                            <!-- Boutons d'action -->
+                                            <div
+                                                class="flex items-center overflow-auto p-4 scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track-gray-100 scrollbar-thumb-blue-400 dark:scrollbar-thumb-night-700 dark:scrollbar-track-night-800">
+                                                <ng-container *ngIf="isUserSubscribed(subcategory)">
+                                                    <button type="button" (click)="onCategoryUnsubscribeClick(subcategory)"
+                                                        class="m-1 flex w-full items-center justify-center rounded-lg bg-red-700 px-2 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-red-300 hover:bg-red-800 dark:bg-red-600 dark:focus:ring-red-800 dark:hover:bg-red-700 md:w-auto">
+                                                        Se désabonner
+                                                    </button>
+                                                </ng-container>
+                                                <ng-container *ngIf="!isUserSubscribed(subcategory)">
+                                                    <button type="button" (click)="onCategorySubscribeClick(subcategory)"
+                                                        class="m-1 flex w-full items-center justify-center rounded-lg bg-blue-700 px-2 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 hover:bg-blue-800 dark:bg-blue-600 dark:focus:ring-blue-800 dark:hover:bg-blue-700 md:w-auto">
+                                                        S'abonner
+                                                    </button>
+                                                </ng-container>
+                                            </div>
+                                        </ng-container>
+
+                                        <!-- Récursivement afficher les sous-catégories -->
+                                        <ng-container
+                                            *ngIf="subcategory.getSubcategories && subcategory.getSubcategories.length > 0">
+                                            <ng-container
+                                                *ngTemplateOutlet="categoryTemplate; context: { $implicit: subcategory.getSubcategories, level: level + 1, parentCategory: subcategory }"></ng-container>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <!-- Récursivement afficher les sous-catégories pour ce niveau -->
+                            <ng-container
+                                *ngIf="subcategories[0]?.getSubcategories && subcategories[0]?.getSubcategories.length > 0">
+                                <ng-container
+                                    *ngTemplateOutlet="categoryTemplate; context: { $implicit: subcategories[0]?.getSubcategories, level: level + 1, parentCategory: subcategories[0] }"></ng-container>
+                            </ng-container>
+                        </div>
+                    </ng-template>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>

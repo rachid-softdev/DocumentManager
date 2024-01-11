@@ -1,0 +1,22 @@
+<div class="flex h-screen w-full overflow-hidden">
+  <!-- Sidebar -->
+  <app-user-sidebar></app-user-sidebar>
+
+  <div class="flex grow flex-col content-start bg-gray-100 dark:bg-night-800">
+    <!-- Header -->
+    <app-user-navbar></app-user-navbar>
+    <!-- main content -->
+    <div
+      class="grow overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thumb-white scrollbar-track-gray-100 dark:scrollbar-thumb-night-700 dark:scrollbar-track-night-800">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- footer 
+    <app-user-footer></app-user-footer> -->
+
+    <!-- Bottom bar -->
+    <app-user-bottom-navbar></app-user-bottom-navbar>
+    
+  </div>
+</div>
+

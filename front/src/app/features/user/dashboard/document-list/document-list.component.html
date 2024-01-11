@@ -1,0 +1,169 @@
+<div class="mx-auto px-4 py-4 lg:container sm:px-8">
+    <div class="grid grid-cols-1">
+        <section class="overflow-x-auto rounded bg-gray-50 shadow-xl dark:bg-night-700">
+            <div class="">
+                <div class="relative overflow-auto bg-white shadow-md dark:bg-night-700 sm:rounded-lg">
+                    <div class="flex flex-col justify-between space-y-3 p-2 md:flex-row md:space-x-4 md:space-y-0">
+                        <div class="md:w-1/2">
+                            <form class="flex items-center">
+                                <label for="simple-search" class="sr-only">
+                                    {{
+                                    'user.dashboard.document.list.searchDocument' | translate
+                                    }}
+                                </label>
+                                <div class="relative w-full">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <svg aria-hidden="true" class="h-5 w-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                             viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                  clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <input type="text" id="simple-search" name="simple-search"
+                                           class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:border-blue-700 focus:ring-blue-700 dark:border-night-700 dark:bg-night-800 dark:text-gray-400 dark:placeholder-gray-400 dark:focus:border-blue-700 dark:focus:ring-blue-700"
+                                           placeholder="Rechercher un document" required="" (input)="onSearch($event)" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="flex flex-shrink-0 flex-col items-stretch justify-end space-y-2 md:flex-row md:items-center md:space-x-3 md:space-y-0">
+                            <button type="button" (click)="toggleDialog(DialogType.AddDocument)" id="createProductModalButton"
+                                    class="flex w-full items-center justify-center rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 hover:bg-blue-800 dark:bg-blue-600 dark:focus:ring-blue-800 dark:hover:bg-blue-700 md:w-auto">
+                                <svg class="mr-2 h-3.5 w-3.5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                     aria-hidden="true">
+                                    <path clip-rule="evenodd" fill-rule="evenodd"
+                                          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
+                                </svg>
+                                {{ 'user.dashboard.document.list.createDocument' | translate }}
+                            </button>
+                            <button type="button"
+                                    (click)="onDownloadAllDocumentsClick()"
+                                    class="m-1 flex w-full items-center justify-center rounded-lg bg-green-700 px-2 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-green-300 hover:bg-green-800 dark:bg-green-600 dark:focus:ring-green-800 dark:hover:bg-green-700 md:w-auto">
+                                {{ 'user.dashboard.document.list.downloadAllDocuments' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                    <form class="flex items-center" [formGroup]="getSearchForm" (ngSubmit)="submitSearchForm()">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 p-4 border rounded-lg shadow-md">
+                            <div class="">
+                                <label for="category" class="block text-sm font-medium text-gray-600 dark:text-night-50">Catégorie</label>
+                                <select id="parentCategory" formControlName="category"
+                                        class="bg-night-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-night-800 dark:border-night-600 dark:placeholder-night-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option value="" disabled>
+                                        {{
+                                        'admin.dashboard.category.list.create.fields.parentCategory.optionParentCategory' | translate }}
+                                    </option>
+                                    <option value="{{ getOptionNameIndependentCategory }}">
+                                        {{
+                                        'admin.dashboard.category.list.create.fields.parentCategory.optionParentCategoryIndependant' |
+                                        translate
+                                        }}
+                                    </option>
+                                    <option *ngFor="let category of getFormattedCategories" [value]="category.category.getId">
+                                        {{
+                                        getCategoryDepthPrefix(category.depth) }} {{ category.category.getName | HTMLEntityDecode }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="">
+                                <label for="title" class="block text-sm font-medium text-gray-600 dark:text-night-50">Titre</label>
+                                <input type="text" id="title" formControlName="title"
+                                       class="mt-1 p-2 w-full bg-night-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-night-800 dark:border-night-600 dark:placeholder-night-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            </div>
+
+                            <div class="">
+                                <label for="description" class="block text-sm font-medium text-gray-600 dark:text-night-50">Description</label>
+                                <input type="text" id="description" formControlName="description"
+                                       class="mt-1 p-2 w-full bg-night-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-night-800 dark:border-night-600 dark:placeholder-night-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            </div>
+
+                            <div class="">
+                                <label for="author" class="block text-sm font-medium text-gray-600 dark:text-night-50">Auteur</label>
+                                <select id="parentCategory" formControlName="author"
+                                        class="bg-night-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-night-800 dark:border-night-600 dark:placeholder-night-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option *ngFor="let user of getUsers" [value]="user.getId">
+                                        {{ user?.getFirstname | HTMLEntityDecode }} - {{ user?.getLastname | HTMLEntityDecode }} ({{ user?.getEmail | HTMLEntityDecode }})
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="reset"
+                                        class="flex w-full items-center justify-center rounded-lg bg-red-700 px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-red-300 hover:bg-blue-800 dark:bg-red-600 dark:focus:ring-red-800 dark:hover:bg-red-700 md:w-auto">
+                                    Effaçer
+                                </button>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="submit"
+                                        class="flex w-full items-center justify-center rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 hover:bg-blue-800 dark:bg-blue-600 dark:focus:ring-blue-800 dark:hover:bg-blue-700 md:w-auto">
+                                    Rechercher
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="grid grid-cols-1 gap-4 p-2 sm:grid-cols-1 md:grid-cols-3">
+                        <div *ngFor="let document of getDocuments"
+                             class="border hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-night-600">
+                            <!-- Contenu de chaque card -->
+                            <!-- Contenu de chaque card -->
+                            <div class="p-4 bg-white rounded-lg shadow-md dark:bg-night-800">
+                                <div class="mb-4">
+                                    <p class="text-xl font-bold text-gray-900 dark:text-white">{{ document.getTitle | HTMLEntityDecode }}</p>
+                                    <div class="flex space-x-2">
+                                        <span *ngIf="document.getIsValidated" class="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">Validé</span>
+                                        <span *ngIf="!document.getIsValidated" class="rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">En attente de validation</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-400">{{ document.getDescription | HTMLEntityDecode }}</p>
+                                <p class="truncate text-gray-700 dark:text-gray-400">
+                                    Nom du fichier : {{ fileInfoMap.get(document.getFileUrl)?.fileName }}
+                                </p>
+                                <p class="truncate text-gray-700 dark:text-gray-400">
+                                    Taille du fichier : {{ formatFileSize(fileInfoMap.get(document.getFileUrl)?.fileSize || 0) }}
+                                </p>
+                                <p class="truncate text-gray-700 dark:text-gray-400">
+                                    Type du fichier : {{ fileInfoMap.get(document.getFileUrl)?.fileExtension }}
+                                </p>
+                                <div class="grid grid-cols-1 gap-2 mt-2">
+                                    <div>
+                                        <p class="text-gray-700 dark:text-gray-400">Envoyé par :</p>
+                                        <p class="font-semibold text-gray-900 dark:text-white">{{ document.getSenderUser?.getEmail | HTMLEntityDecode }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-700 dark:text-gray-400">Validé par :</p>
+                                        <p class="font-semibold text-gray-900 dark:text-white">{{ document.getValidatorUser?.getEmail | HTMLEntityDecode }}</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-400 mt-2">Date de validation : {{ document.getValidatedAt | date : 'dd/MM/yyyy à HH:mm:ss' }}</p>
+                                <div class="text-gray-700 dark:text-gray-400">
+                                    Lien :
+                                    <a class="text-sm text-blue-600 dark:text-blue-500 hover:underline" href="{{ document.getFileUrl }}" target="_blank">
+                                        {{ document.getFileUrl }}
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Boutons d'action -->
+                            <div class="flex items-center overflow-auto p-4 scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track-gray-100 scrollbar-thumb-blue-400 dark:scrollbar-thumb-night-700 dark:scrollbar-track-night-800">
+                                <button type="button" (click)="onDownloadDocument(document.getFileUrl)"
+                                        class="m-1 flex w-full items-center justify-center rounded-lg bg-green-700 px-2 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-green-300 hover:bg-green-800 dark:bg-green-600 dark:focus:ring-green-800 dark:hover:bg-green-700 md:w-auto">
+                                    {{ 'user.dashboard.document.list.downloadDocument' | translate }}
+                                </button>
+                                <button type="button" (click)="onDocumentDetailClick(document)"
+                                        class="m-1 flex w-full items-center justify-center rounded-lg border border-gray-200 bg-gray-300 px-2 py-2 text-sm font-medium text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 dark:border-night-600 dark:bg-night-800 dark:text-night-100 dark:focus:ring-night-700 dark:hover:bg-night-800 dark:hover:text-white md:w-auto">
+                                    {{ 'user.dashboard.document.list.detailDocument' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <app-document-list-create [class.hidden]="!getDialogState[DialogType.AddDocument]"
+                                  (getDialogToggled)="toggleDialog(DialogType.AddDocument)"
+                                  (getDocumentCreatedEvent)="onDocumentCreated()"></app-document-list-create>
+
+        <app-document-list-detail [class.hidden]="!getDialogState[DialogType.DocumentDetail]"
+                                  (getDialogToggled)="toggleDialog(DialogType.DocumentDetail)"
+                                  [setDocument]="getSelectedDocument"></app-document-list-detail>
+    </div>
+</div>

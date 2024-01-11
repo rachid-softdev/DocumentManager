@@ -1,0 +1,10 @@
+# Spécifie le type d'attributs par défaut pour tous les fichiers
+* text=auto
+
+# Gestion des fins de ligne pour certains fichiers communs
+*.cs text eol=lf
+*.sln text eol=lf
+*.csproj text eol=lf
+*.suo binary
+*.user binary
+*.userprefs binary

@@ -1,0 +1,31 @@
+<div class="h-screen w-screen flex flex-col">
+  <app-public-header></app-public-header>
+  <div class="flex h-full">
+    <div class="auth-bg hidden flex-1 items-center justify-center bg-blue-500 bg-cover lg:flex">
+      <div class="max-w-2xl space-y-4 p-8 text-center text-white">
+        <h1 class="text-4xl font-bold">"{{ 'public.authentication.page.title' | translate }}"</h1>
+        <p class="text-xs font-light">
+          {{ 'public.authentication.page.adminModule' | translate }}
+        </p>
+        <!-- InnerHTML car la valeur contient du html -->
+        <p class="text-xs font-light" [innerHTML]="'public.authentication.page.uploadDocuments' | translate">
+        </p>
+        <p class="text-xs font-light">
+          {{ 'public.authentication.page.readAndDownload' | translate }}
+        </p>
+        <p class="text-xs font-light">
+          {{ 'public.authentication.page.documentApproval' | translate }}
+        </p>
+        <p class="text-xs font-light">
+          {{ 'public.authentication.page.interactionFeatures' | translate }}
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-1 items-center justify-center bg-white dark:bg-night-700">
+      <div class="max-w-md overflow-y-auto px-4 sm:w-[500px]">
+        <!-- Route -->
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

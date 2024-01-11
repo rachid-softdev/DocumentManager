@@ -1,0 +1,62 @@
+version: "3.7"
+ 
+volumes:
+  portainer_data:
+  sql_data:
+  angularngixvolume:
+
+services:
+  web-app:
+    container_name: web-app
+    image: mcr.microsoft.com/dotnet/sdk:7.0
+    command: sh -c "dotnet restore && dotnet build && dotnet watch run --no-launch-profile"
+    # command: sh -c "dotnet restore ./back/DocumentManager.csproj && dotnet build ./back/DocumentManager.csproj && dotnet watch run --project ./back/DocumentManager.csproj --no-launch-profile"
+    ports:
+      - 80:80
+      - 443:443
+      # - 7247 
+      # - 5247
+    working_dir: /app
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      # Run on local machine : dotnet dev-certs https -v --trust -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p r00t.R00T
+      # Il se peut que sur linux et mac cette commande pose problème. Revenir vers nous en cas de soucis.
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=r00t.R00T
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ConnectionStrings__DocumentManagerDatabase=Server=sql-server;Database=DocumentManager;User=sa;Password=d0cument.Manager;Encrypt=True;TrustServerCertificate=True
+    volumes:
+      - ./back/:/app
+      # - ./:/app
+      - /app/Resources/
+      - /app/bin/
+      - /app/obj/
+      - ~/.aspnet/https:/https:ro
+  sql-server:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=d0cument.Manager
+    volumes:
+      - sql_data:/var/opt/mssql
+  smtp:
+    container_name: smtp
+    image: dockage/mailcatcher:0.8.2
+    ports:
+      - 1080:1080
+      - 1025:1025
+
+  # Front-end Angular Application
+  # front:
+  #  container_name: front_document_manager
+  #  restart: always
+  #  build:
+  #      context: ./front
+  #      dockerfile: Dockerfile
+  #  ports:
+  #      - 4200:80
+  #  environment:
+  #      - NG_API_BASE_URL=http://localhost:8080/api/document_manager

@@ -1,0 +1,59 @@
+<div
+  id="documentDetailsModal"
+  aria-hidden="true"
+  class="fixed left-0 right-0 top-0 z-50 flex h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+  <div class="relative max-h-full w-full max-w-xl p-4">
+    <!-- Modal content -->
+      <div class="relative rounded-lg bg-white p-4 shadow dark:bg-night-800 sm:p-5">
+          <!-- Modal header -->
+          <div class="mb-4 flex justify-between rounded-t sm:mb-5">
+              <div *ngIf="getDocument" class="text-lg text-night-900 dark:text-white md:text-xl">
+                  <h3 class="font-semibold">{{ getDocument.getId }}</h3>
+              </div>
+              <div *ngIf="!getDocument" class="text-night-500 dark:text-white">{{ 'user.dashboard.document.list.detail.noSelected' | translate }}</div>
+              <div>
+                  <button type="button"
+                          (click)="toggleDialog()"
+                          class="inline-flex rounded-lg bg-transparent p-1.5 text-sm text-black hover:bg-night-200 hover:text-night-900 dark:hover:bg-night-600 dark:hover:text-white">
+                      <svg aria-hidden="true"
+                           class="h-5 w-5"
+                           fill="currentColor"
+                           viewBox="0 0 20 20"
+                           xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                      </svg>
+                      <span class="sr-only">{{ 'user.dashboard.document.list.detail.close' | translate }}</span>
+                  </button>
+              </div>
+          </div>
+          <div class="mb-4">
+              <p class="text-xl font-bold text-gray-900 dark:text-white">{{ getDocument?.getTitle | HTMLEntityDecode }}</p>
+              <div class="flex space-x-2">
+                  <span *ngIf="getDocument?.getIsValidated" class="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">Validé</span>
+                  <span *ngIf="!getDocument?.getIsValidated" class="rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">En attente de validation</span>
+              </div>
+          </div>
+          <p class="text-gray-700 dark:text-gray-400">{{ getDocument?.getDescription | HTMLEntityDecode }}</p>
+          <div class="grid grid-cols-2 gap-2 mt-2">
+              <div>
+                  <p class="text-gray-700 dark:text-gray-400">Envoyé par :</p>
+                  <p class="font-semibold text-gray-900 dark:text-white">{{ getDocument?.getSenderUser?.getEmail | HTMLEntityDecode }}</p>
+              </div>
+              <div>
+                  <p class="text-gray-700 dark:text-gray-400">Validé par :</p>
+                  <p class="font-semibold text-gray-900 dark:text-white">{{ getDocument?.getValidatorUser?.getEmail | HTMLEntityDecode }}</p>
+              </div>
+          </div>
+          <p class="text-gray-700 dark:text-gray-400 mt-2">Date de validation : {{ getDocument?.getValidatedAt | date : 'dd/MM/yyyy à HH:mm:ss' }}</p>
+          <div class="text-gray-700 dark:text-gray-400">
+              Lien :
+              <a class="text-sm text-blue-600 dark:text-blue-500 hover:underline" href="{{ getDocument?.getFileUrl }}" target="_blank">
+                  {{ getDocument?.getFileUrl }}
+              </a>
+          </div>
+      </div>
+  </div>
+</div>

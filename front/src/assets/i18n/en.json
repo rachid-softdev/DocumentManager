@@ -1,0 +1,361 @@
+{
+  "admin": {
+    "dashboard": {
+      "category": {
+        "list": {
+          "create": {
+            "title": "Creating a category",
+            "close": "Close",
+            "fields": {
+              "name": {
+                "label": "Name",
+                "placeholder": "Enter category name",
+                "validMessage": "The name field is valid.",
+                "errorMessages": {
+                  "required": "The name is required.",
+                  "minlength": "The name must contain at least {{ minLength }} characters.",
+                  "maxlength": "The name must contain at most {{ maxLength }} characters."
+                }
+              },
+              "description": {
+                "label": "Description",
+                "placeholder": "Enter category description",
+                "validMessage": "The description field is valid.",
+                "errorMessages": {
+                  "required": "Description is required.",
+                  "minlength": "The description must contain at least {{ minLength }} characters.",
+                  "maxlength": "The description must contain a maximum of {{ maxLength }} characters."
+                }
+              },
+              "parentCategory": {
+                "label": "Parent category",
+                "optionParentCategory": "Select a parent category",
+                "optionParentCategoryIndependant": "Independent",
+                "validMessage": "The parent category is valid.",
+                "errorMessages": {
+                  "required": "The parent category is required.",
+                  "minlength": "The description must contain at least {{ minLength }} characters.",
+                  "maxlength": "The description must contain a maximum of {{ maxLength }} characters."
+                }
+              }
+            },
+            "submitButton": {
+              "text": "Add a new category",
+              "loadingText": "Loading..."
+            }
+          },
+          "update": {
+            "title": "Updated category",
+            "close": "Close",
+            "fields": {
+              "name": {
+                "label": "Name",
+                "placeholder": "Enter category name",
+                "validMessage": "The name field is valid.",
+                "errorMessages": {
+                  "required": "The name is required.",
+                  "minlength": "The name must contain at least {{ minLength }} characters.",
+                  "maxlength": "The name must contain at most {{ maxLength }} characters."
+                }
+              },
+              "description": {
+                "label": "Description",
+                "placeholder": "Enter category description",
+                "validMessage": "The description field is valid.",
+                "errorMessages": {
+                  "required": "Description is required.",
+                  "minlength": "The description must contain at least {{ minLength }} characters.",
+                  "maxlength": "The description must contain a maximum of {{ maxLength }} characters."
+                }
+              },
+              "parentCategory": {
+                "label": "Parent category",
+                "optionParentCategory": "Select a parent category",
+                "optionParentCategoryIndependant": "Independent",
+                "validMessage": "The parent category is valid.",
+                "errorMessages": {
+                  "required": "The parent category is required.",
+                  "minlength": "The description must contain at least {{ minLength }} characters.",
+                  "maxlength": "The description must contain a maximum of {{ maxLength }} characters."
+                }
+              }
+            },
+            "submitButton": {
+              "text": "Update category",
+              "loadingText": "Loading..."
+            }
+          },
+          "delete": {
+            "close": "Close",
+            "question": "Are you sure you want to delete this category?",
+            "submitButton": {
+              "yes": "Yes",
+              "no": "No",
+              "loadingText": "Loading..."
+            }
+          },
+          "detail": { "close": "Close", "noSelected": "No category selected." }
+        }
+      },
+      "document": {
+        "list": {
+          "create": {
+            "title": "Creating a document",
+            "close": "Close",
+            "fields": {
+              "title": {
+                "label": "Title",
+                "placeholder": "Enter the document title",
+                "validMessage": "The title field is valid.",
+                "errorMessages": {
+                  "required": "The title is required.",
+                  "minlength": "The title must contain at least {{ minLength }} characters.",
+                  "maxlength": "The title must contain a maximum of {{ maxLength }} characters."
+                }
+              },
+              "description": {
+                "label": "Description",
+                "placeholder": "Enter document description",
+                "validMessage": "The description field is valid.",
+                "errorMessages": {
+                  "required": "Description is required.",
+                  "minlength": "The description must contain at least {{ minLength }} characters.",
+                  "maxlength": "The description must contain a maximum of {{ maxLength }} characters."
+                }
+              }
+            },
+            "submitButton": {
+              "text": "Update document",
+              "loadingText": "Loading..."
+            }
+          },
+          "update": {
+            "title": "Updating a document",
+            "close": "Close",
+            "fields": {
+              "title": {
+                "label": "Title",
+                "placeholder": "Enter the document title",
+                "validMessage": "The title field is valid.",
+                "errorMessages": {
+                  "required": "The title is required.",
+                  "minlength": "The title must contain at least {{ minLength }} characters.",
+                  "maxlength": "The title must contain a maximum of {{ maxLength }} characters."
+                }
+              },
+              "description": {
+                "label": "Description",
+                "placeholder": "Enter document description",
+                "validMessage": "The description field is valid.",
+                "errorMessages": {
+                  "required": "Description is required.",
+                  "minlength": "The description must contain at least {{ minLength }} characters.",
+                  "maxlength": "The description must contain a maximum of {{ maxLength }} characters."
+                }
+              }
+            },
+            "submitButton": {
+              "text": "Add a new document",
+              "loadingText": "Loading..."
+            }
+          },
+          "delete": {
+            "close": "Close",
+            "question": "Are you sure you want to delete this document?",
+            "submitButton": {
+              "yes": "Yes",
+              "no": "No",
+              "loadingText": "Loading..."
+            }
+          },
+          "detail": { "close": "Close", "noSelected": "No document selected." }
+        },
+        "validation": { "searchDocuments": "Search for a document" }
+      },
+      "emailtemplate": {
+        "title": "Customizing the email template",
+        "fields": {
+          "message": {
+            "label": "The template model",
+            "placeholder": "Enter your template design"
+          },
+          "variable": {
+            "label": "List of variables",
+            "defaultoption": "Select a variable"
+          }
+        },
+        "submitButton": { "text": "Save the template" }
+      }
+    },
+    "layout": {
+      "sidebar": {
+        "theme": { "light": "Clear theme", "dark": "Dark theme" },
+        "logout": { "label": "Disconnect" }
+      }
+    }
+  },
+  "user": {
+    "dashboard": {
+      "document": {
+        "list": {
+          "searchDocument": "Search for a document",
+          "createDocument": "Add a document",
+          "downloadAllDocuments": "Download all documents",
+          "downloadDocument": "Download",
+          "updateDocument": "To modify",
+          "detailDocument": "To consult",
+          "deleteDocument": "DELETE",
+          "create": {
+            "title": "Creating a document",
+            "close": "Close",
+            "titleLabel": "Title",
+            "titlePlaceholder": "Enter the document title",
+            "titleValid": "The title field is valid.",
+            "titleRequired": "The title field is required.",
+            "titleMinLength": "The title must contain at least {{ minLength }} characters.",
+            "titleMaxLength": "The title must contain a maximum of {{ maxLength }} characters.",
+            "descriptionLabel": "Description",
+            "descriptionPlaceholder": "Enter document description",
+            "descriptionValid": "The description field is valid.",
+            "descriptionRequired": "The description field is required.",
+            "descriptionMinLength": "The description must contain at least {{ minLength }} characters.",
+            "descriptionMaxLength": "The description must contain a maximum of {{ maxLength }} characters.",
+            "fileLabel": "File",
+            "createButton": "Add a new document",
+            "loadingButton": "Loading..."
+          },
+          "delete": {
+            "sureToDelete": "Are you sure you want to delete this document?",
+            "loadingButton": "Loading...",
+            "yes": "Yes",
+            "no": "No"
+          },
+          "detail": { "noSelected": "No document selected.", "close": "Close" }
+        }
+      }
+    },
+    "layout": {
+      "sidebar": {
+        "theme": { "light": "Clear theme", "dark": "Dark theme" },
+        "logout": { "label": "Disconnect" }
+      }
+    }
+  },
+  "public": {
+    "authentication": {
+      "page": {
+        "title": "Document Manager, a document manager",
+        "adminModule": "As part of our application, two distinct modules shape a rich and complete experience. On the one hand, an administration module, accessible exclusively to platform administrators, offers total control over the structuring of documents. On the other hand, a document visualization and management module, open to all connected users, allows intuitive exploration and collaborative contribution.",
+        "uploadDocuments": "The application makes it easy to put documents online, organizing them into categories and subcategories that can be configured by administrators. These define the available categories and assign subcategories to each, thus forming a flexible structure. Let's take the example of a category <span class=\"cursor-pointer font-medium text-yellow-400\">Sport</span> with subcategories such as \"<span class=\"cursor-pointer font-medium text-yellow-400\">Racket sports</span>\", \"<span class=\"cursor-pointer font-medium text-yellow-400\">Team sports</span>\", and \"<span class=\" cursor-pointer font-medium text-yellow-400\">Combat Sports</span>\".",
+        "readAndDownload": "All users can read and download the documents posted online. A filter panel offers efficient searching by category, title, description and author. Users can also propose adding documents to an existing subcategory, a process subject to approval by an administrator.",
+        "documentApproval": "A document, consisting of a title, a description and a downloadable file, requires the approval of an administrator before being accessible to everyone. A page dedicated to documents awaiting validation offers administrators a complete view, also accessible to users to follow their proposals.",
+        "interactionFeatures": "The interaction does not end there. Users can subscribe to a category or subcategory, receiving email notifications each time a document is added after validation. The email template is customizable via the administration module, allowing the insertion of dynamic fields such as URL, title and description of the document."
+      },
+      "login": {
+        "title": "Connection",
+        "subtitle": "Enter your credentials to access your account",
+        "emailLabel": "E-mail address",
+        "emailRequired": "Email address is required.",
+        "emailInvalid": "Please enter a valid email address.",
+        "passwordLabel": "Password",
+        "passwordRequired": "Password is required.",
+        "passwordMinlength": "The password must contain at least {{ minLength }} characters.",
+        "passwordMaxlength": "The password must contain at most {{ maxLength }} characters.",
+        "passwordRules": "The password must contain at least one number, one lowercase letter, one uppercase letter and one special character.",
+        "buttonLoading": "Loading",
+        "buttonLogin": "To log in",
+        "noAccount": "No account",
+        "createAccount": "Create one"
+      },
+      "register": {
+        "title": "Registration",
+        "subtitle": "Complete the form to create your account.",
+        "fields": {
+          "lastname": {
+            "label": "Name",
+            "placeholder": "Enter name",
+            "errorMessages": {
+              "required": "The name is required.",
+              "minlength": "The name must contain at least {{ minLength }} characters.",
+              "maxlength": "The name must contain at most {{ maxLength }} characters.",
+              "pattern": "The last name must contain only letters, spaces, apostrophes and hyphens."
+            }
+          },
+          "firstname": {
+            "label": "First name",
+            "placeholder": "Enter first name",
+            "errorMessages": {
+              "required": "First name is required.",
+              "minlength": "The first name must contain at least {{ minLength }} characters.",
+              "maxlength": "The first name must contain a maximum of {{ maxLength }} characters.",
+              "pattern": "The first name must contain only letters, spaces, apostrophes and hyphens."
+            }
+          },
+          "email": {
+            "label": "E-mail address",
+            "placeholder": "Enter email address",
+            "errorMessages": {
+              "required": "Email address is required.",
+              "email": "Please enter a valid email address."
+            }
+          },
+          "password": {
+            "label": "Password",
+            "placeholder": "Enter password",
+            "errorMessages": {
+              "required": "Password is required.",
+              "minlength": "The password must contain at least {{ minLength }} characters.",
+              "maxlength": "The password must contain a maximum of {{ maxLength }} characters.",
+              "pattern": "The password must contain at least one number, one lowercase letter, one uppercase letter and one special character."
+            }
+          }
+        },
+        "submitButton": { "text": "Register", "loadingText": "Loading..." },
+        "hasAccount": "Already have an account?",
+        "loginAccount": "Log in"
+      }
+    },
+    "home": {
+      "title": "Title",
+      "slogan": "Slogan.",
+      "getStarted": "To start",
+      "trustedPartners": "They trust us",
+      "features": {
+        "sectionTitle": "Features",
+        "description": "Description of features",
+        "feature": {
+          "title": "Element",
+          "description": "Description of the item."
+        }
+      },
+      "strategy": {
+        "sectionTitle": "Strategy",
+        "description": "Description of the strategy"
+      },
+      "statistics": {
+        "sectionTitle": "More than <span class=\"font-extrabold\">200,000+</span> documents</h2>",
+        "description": "Description of these figures.",
+        "impactStatement": "Argument of the impact of Document Manager.",
+        "learnMore": "Learn more"
+      },
+      "getStartedToday": {
+        "sectionTitle": "Get started today",
+        "description": "Try Document Manager for free.",
+        "startButton": "Get started"
+      },
+      "footer": {
+        "access": {
+          "sectionTitle": "Access",
+          "login": "Connection",
+          "register": "Registration"
+        },
+        "followUs": { "sectionTitle": "Follow us" },
+        "legal": {
+          "sectionTitle": "Legal Notice",
+          "privacyPolicy": "Privacy Policy",
+          "termsAndConditions": "Terms and conditions"
+        }
+      }
+    }
+  }
+}

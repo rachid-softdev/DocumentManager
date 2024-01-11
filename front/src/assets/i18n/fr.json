@@ -1,0 +1,389 @@
+{
+  "admin": {
+    "dashboard": {
+      "category": {
+        "list": {
+          "create": {
+            "title": "Création d'une catégorie",
+            "close": "Fermer",
+            "fields": {
+              "name": {
+                "label": "Nom",
+                "placeholder": "Entrer le nom de la catégorie",
+                "validMessage": "Le champ name est valide.",
+                "errorMessages": {
+                  "required": "Le nom est requis.",
+                  "minlength": "Le nom doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "Le nom doit contenir au maximum {{ maxLength }} caractères."
+                }
+              },
+              "description": {
+                "label": "Description",
+                "placeholder": "Entrer la description de la catégorie",
+                "validMessage": "Le champ description est valide.",
+                "errorMessages": {
+                  "required": "La description est requis.",
+                  "minlength": "La description doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "La description doit contenir au maximum {{ maxLength }} caractères."
+                }
+              },
+              "parentCategory": {
+                "label": "Catégorie parente",
+                "optionParentCategory": "Sélectionnez une catégorie parente",
+                "optionParentCategoryIndependant": "Indépendante",
+                "validMessage": "Le catégorie parente est valide.",
+                "errorMessages": {
+                  "required": "Le catégorie parente est requise.",
+                  "minlength": "La description doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "La description doit contenir au maximum {{ maxLength }} caractères."
+                }
+              }
+            },
+            "submitButton": {
+              "text": "Ajouter une nouvelle catégorie",
+              "loadingText": "Chargement..."
+            }
+          },
+          "update": {
+            "title": "Mis à jour de la catégorie",
+            "close": "Fermer",
+            "fields": {
+              "name": {
+                "label": "Nom",
+                "placeholder": "Entrer le nom de la catégorie",
+                "validMessage": "Le champ name est valide.",
+                "errorMessages": {
+                  "required": "Le nom est requis.",
+                  "minlength": "Le nom doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "Le nom doit contenir au maximum {{ maxLength }} caractères."
+                }
+              },
+              "description": {
+                "label": "Description",
+                "placeholder": "Entrer la description de la catégorie",
+                "validMessage": "Le champ description est valide.",
+                "errorMessages": {
+                  "required": "La description est requis.",
+                  "minlength": "La description doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "La description doit contenir au maximum {{ maxLength }} caractères."
+                }
+              },
+              "parentCategory": {
+                "label": "Catégorie parente",
+                "optionParentCategory": "Sélectionnez une catégorie parente",
+                "optionParentCategoryIndependant": "Indépendante",
+                "validMessage": "Le catégorie parente est valide.",
+                "errorMessages": {
+                  "required": "Le catégorie parente est requise.",
+                  "minlength": "La description doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "La description doit contenir au maximum {{ maxLength }} caractères."
+                }
+              }
+            },
+            "submitButton": {
+              "text": "Mettre à jour la catégorie",
+              "loadingText": "Chargement..."
+            }
+          },
+          "delete": {
+            "close": "Fermer",
+            "question": "Êtes-vous sûr de vouloir supprimer cette catégorie ?",
+            "submitButton": {
+              "yes": "Oui",
+              "no": "Non",
+              "loadingText": "Chargement..."
+            }
+          },
+          "detail": {
+            "close": "Fermer",
+            "noSelected": "Aucune categorie sélectionnée."
+          }
+        }
+      },
+      "document": {
+        "list": {
+          "create": {
+            "title": "Création d'un document",
+            "close": "Fermer",
+            "fields": {
+              "title": {
+                "label": "Titre",
+                "placeholder": "Entrer le titre du document",
+                "validMessage": "Le champ titre est valide.",
+                "errorMessages": {
+                  "required": "Le titre est requis.",
+                  "minlength": "Le titre doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "Le titre doit contenir au maximum {{ maxLength }} caractères."
+                }
+              },
+              "description": {
+                "label": "Description",
+                "placeholder": "Entrer la description du document",
+                "validMessage": "Le champ description est valide.",
+                "errorMessages": {
+                  "required": "La description est requise.",
+                  "minlength": "La description doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "La description doit contenir au maximum {{ maxLength }} caractères."
+                }
+              }
+            },
+            "submitButton": {
+              "text": "Mettre à jour le document",
+              "loadingText": "Chargement..."
+            }
+          },
+          "update": {
+            "title": "Mis à jour d'un document",
+            "close": "Fermer",
+            "fields": {
+              "title": {
+                "label": "Titre",
+                "placeholder": "Entrer le titre du document",
+                "validMessage": "Le champ titre est valide.",
+                "errorMessages": {
+                  "required": "Le titre est requis.",
+                  "minlength": "Le titre doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "Le titre doit contenir au maximum {{ maxLength }} caractères."
+                }
+              },
+              "description": {
+                "label": "Description",
+                "placeholder": "Entrer la description du document",
+                "validMessage": "Le champ description est valide.",
+                "errorMessages": {
+                  "required": "La description est requise.",
+                  "minlength": "La description doit contenir au moins {{ minLength }} caractère.",
+                  "maxlength": "La description doit contenir au maximum {{ maxLength }} caractères."
+                }
+              }
+            },
+            "submitButton": {
+              "text": "Ajouter un nouveau document",
+              "loadingText": "Chargement..."
+            }
+          },
+          "delete": {
+            "close": "Fermer",
+            "question": "Êtes-vous sûr de vouloir supprimer ce document ?",
+            "submitButton": {
+              "yes": "Oui",
+              "no": "Non",
+              "loadingText": "Chargement..."
+            }
+          },
+          "detail": {
+            "close": "Fermer",
+            "noSelected": "Aucun document sélectionné."
+          }
+        },
+        "validation": {
+          "searchDocuments": "Rechercher un document"
+        }
+      },
+      "emailtemplate": {
+        "title": "Personnalisation du modèle d'email",
+        "fields": {
+          "message": {
+            "label": "Le modèle de template",
+            "placeholder": "Entrez votre modèle de template"
+          },
+          "variable": {
+            "label": "Liste des variables",
+            "defaultoption": "Sélectionnez une variable"
+          }
+        },
+        "submitButton": {
+          "text": "Sauvegarder le template"
+        }
+      }
+    },
+    "layout": {
+      "sidebar": {
+        "theme": {
+          "light": "Thème clair",
+          "dark": "Thème sombre"
+        },
+        "logout": {
+          "label": "Déconnexion"
+        }
+      }
+    }
+  },
+  "user": {
+    "dashboard": {
+      "document": {
+        "list": {
+          "searchDocument": "Recherche un document",
+          "createDocument": "Ajouter un document",
+          "downloadAllDocuments": "Télécharger tous les documents",
+          "downloadDocument": "Télécharger",
+          "updateDocument": "Modifier",
+          "detailDocument": "Consulter",
+          "deleteDocument": "Supprimer",
+          "create": {
+            "title": "Création d'un document",
+            "close": "Fermer",
+            "titleLabel": "Titre",
+            "titlePlaceholder": "Entrer le titre du document",
+            "titleValid": "Le champ titre est valide.",
+            "titleRequired": "Le champ titre est requis.",
+            "titleMinLength": "Le titre doit contenir au minimum {{ minLength }} caractère.",
+            "titleMaxLength": "Le titre doit contenir au maximum {{ maxLength }} caractères.",
+            "descriptionLabel": "Description",
+            "descriptionPlaceholder": "Entrer la description du document",
+            "descriptionValid": "Le champ description est valide.",
+            "descriptionRequired": "Le champ description est requis.",
+            "descriptionMinLength": "Le description doit contenir au minimum {{ minLength }} caractère.",
+            "descriptionMaxLength": "Le description doit contenir au maximum {{ maxLength }} caractères.",
+            "fileLabel": "Fichier",
+            "createButton": "Ajouter un nouveau document",
+            "loadingButton": "Chargement..."
+          },
+          "delete": {
+            "sureToDelete": "Êtes-vous sûr de vouloir supprimer ce document ?",
+            "loadingButton": "Chargement...",
+            "yes": "Oui",
+            "no": "Non"
+          },
+          "detail": {
+            "noSelected": "Aucun document sélectionné.",
+            "close": "Fermer"
+          }
+        }
+      }
+    },
+    "layout": {
+      "sidebar": {
+        "theme": {
+          "light": "Thème clair",
+          "dark": "Thème sombre"
+        },
+        "logout": {
+          "label": "Déconnexion"
+        }
+      }
+    }
+  },
+  "public": {
+    "authentication": {
+      "page": {
+        "title": "Document Manager, un gestionnaire de documents",
+        "adminModule": "Dans le cadre de notre application, deux modules distincts façonnent une expérience riche et complète. D'une part, un module d'administration, accessible exclusivement aux administrateurs de la plateforme, offre un contrôle total sur la structuration des documents. De l'autre, un module de visualisation et gestion des documents, ouvert à tous les utilisateurs connectés, permet une exploration intuitive et une contribution collaborative.",
+        "uploadDocuments": "L'application facilite la mise en ligne de documents, les organisant dans des catégories et sous-catégories paramétrables par les administrateurs. Ces derniers définissent les catégories disponibles et attribuent des sous-catégories à chacune, formant ainsi une structure flexible. Prenons l'exemple d'une catégorie <span class=\"cursor-pointer font-medium text-yellow-400\">Sport</span> avec des sous-catégories telles que \"<span class=\"cursor-pointer font-medium text-yellow-400\">Sports de raquettes</span>\", \"<span class=\"cursor-pointer font-medium text-yellow-400\">Sports collectifs</span>\", et \"<span class=\"cursor-pointer font-medium text-yellow-400\">Sports de combat</span>\".",
+        "readAndDownload": "Tous les utilisateurs peuvent lire et télécharger les documents mis en ligne. Un panneau de filtre offre une recherche efficace par catégorie, titre, description et auteur. Les utilisateurs peuvent également proposer l'ajout de documents à une sous-catégorie existante, un processus soumis à la validation d'un administrateur.",
+        "documentApproval": "Un document, composé d'un titre, d'une description et d'un fichier téléchargeable, nécessite l'approbation d'un administrateur avant d'être accessible à tous. Une page dédiée aux documents en attente de validation offre aux administrateurs une vue complète, accessible également aux utilisateurs pour suivre leurs propositions.",
+        "interactionFeatures": "L'interaction ne se limite pas là. Les utilisateurs peuvent s'abonner à une catégorie ou sous-catégorie, recevant des notifications par e-mail à chaque ajout de document après validation. Le modèle d'e-mail est personnalisable via le module d'administration, permettant l'insertion de champs dynamiques tels que l'URL, le titre et la description du document."
+      },
+      "login": {
+        "title": "Connexion",
+        "subtitle": "Entrez vos identifiants pour accéder à votre compte",
+        "emailLabel": "Adresse e-mail",
+        "emailRequired": "L'adresse e-mail est requise.",
+        "emailInvalid": "Veuillez entrer une adresse e-mail valide.",
+        "passwordLabel": "Mot de passe",
+        "passwordRequired": "Le mot de passe est requis.",
+        "passwordMinlength": "Le mot de passe doit contenir au moins {{ minLength }} caractères.",
+        "passwordMaxlength": "Le mot de passe doit contenir au plus {{ maxLength }} caractères.",
+        "passwordRules": "Le mot de passe doit contenir au moins un chiffre, une lettre minuscule, une lettre majuscule et un caractère spécial.",
+        "buttonLoading": "Chargement",
+        "buttonLogin": "Se connecter",
+        "noAccount": "Pas de compte",
+        "createAccount": "Créez en un"
+      },
+      "register": {
+        "title": "Inscription",
+        "subtitle": "Remplissez le formulaire pour créer votre compte.",
+        "fields": {
+          "lastname": {
+            "label": "Nom",
+            "placeholder": "Entrer le nom",
+            "errorMessages": {
+              "required": "Le nom est requis.",
+              "minlength": "Le nom doit contenir au moins {{ minLength }} caractère.",
+              "maxlength": "Le nom doit contenir au maximum {{ maxLength }} caractères.",
+              "pattern": "Le nom de famille doit contenir uniquement des lettres, des espaces, des apostrophes et des tirets."
+            }
+          },
+          "firstname": {
+            "label": "Prénom",
+            "placeholder": "Entrer le prénom",
+            "errorMessages": {
+              "required": "Le prénom est requis.",
+              "minlength": "Le prénom doit contenir au moins {{ minLength }} caractère.",
+              "maxlength": "Le prénom doit contenir au maximum {{ maxLength }} caractères.",
+              "pattern": "Le prénom doit contenir uniquement des lettres, des espaces, des apostrophes et des tirets."
+            }
+          },
+          "email": {
+            "label": "Adresse e-mail",
+            "placeholder": "Entrer l'adresse e-mail",
+            "errorMessages": {
+              "required": "L'adresse e-mail est requise.",
+              "email": "Veuillez entrer une adresse e-mail valide."
+            }
+          },
+          "password": {
+            "label": "Mot de passe",
+            "placeholder": "Entrer le mot de passe",
+            "errorMessages": {
+              "required": "Le mot de passe est requis.",
+              "minlength": "Le mot de passe doit contenir au moins {{ minLength }} caractères.",
+              "maxlength": "Le mot de passe doit contenir au maximum {{ maxLength }} caractères.",
+              "pattern": "Le mot de passe doit contenir au moins un chiffre, une lettre minuscule, une lettre majuscule et un caractère spécial."
+            }
+          }
+        },
+        "submitButton": {
+          "text": "S'inscrire",
+          "loadingText": "Chargement..."
+        },
+        "hasAccount": "Déjà un compte ?",
+        "loginAccount": "Connectez-vous"
+      }
+    },
+    "home": {
+      "title": "Titre",
+      "slogan": "Slogan.",
+      "getStarted": "Commencer",
+      "trustedPartners": "Ils nous font confiance",
+      "features": {
+        "sectionTitle": "Fonctionnalités",
+        "description": "Description des fonctionnalités",
+        "feature": {
+          "title": "Élément",
+          "description": "Description de l'élément."
+        }
+      },
+      "strategy": {
+        "sectionTitle": "Stratégie",
+        "description": "Description de la stratégie"
+      },
+      "statistics": {
+        "sectionTitle": "Plus de <span class=\"font-extrabold\">200,000+</span> documents</h2>",
+        "description": "Description de ces chiffres.",
+        "impactStatement": "Argumentation de l'impact de Document Manager.",
+        "learnMore": "En savoir plus"
+      },
+      "getStartedToday": {
+        "sectionTitle": "Commencer dès aujourd'hui",
+        "description": "Essayer Document Manager gratuitement.",
+        "startButton": "Commencez"
+      },
+      "footer": {
+        "access": {
+          "sectionTitle": "Accès",
+          "login": "Connexion",
+          "register": "Inscription"
+        },
+        "followUs": {
+          "sectionTitle": "Nous suivre"
+        },
+        "legal": {
+          "sectionTitle": "Mentions légales",
+          "privacyPolicy": "Politique de confidentialité",
+          "termsAndConditions": "Conditions générales"
+        }
+      }
+    }
+  }
+}
